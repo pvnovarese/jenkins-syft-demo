@@ -1,6 +1,6 @@
 # Demo: Integrating Jenkins with Syft
 
-This is a very rough demo of integrating Syft with jenkins.  If you don't know what Syft is, read up here: https://github.com/anchore/syft
+This is a very rough demo of integrating Syft with Jenkins.  If you don't know what Syft is, read up here: https://github.com/anchore/syft
 
 ## Part 1: Jenkins Setup
 
