@@ -17,8 +17,8 @@ pipeline {
         sh 'docker --version'
         script {
           docker.withRegistry('https://' + registry, registryCredential) {
-            def image = docker.build(repository)
-            image.push()
+            //def image = docker.build(repository)
+            //image.push()
           }
         }
       }
@@ -26,7 +26,7 @@ pipeline {
     stage('Analyze with syft') {
       steps {
         // need to actually test this out once I get linux binaries
-        sh '/var/jenkins_home/syft ${repository}:latest | grep -i Curl || exit 0'
+        sh '/var/jenkins_home/syft ${repository}:latest | grep -i curl || exit 0'
       }
     }
     stage('Build and push prod image to registry') {
