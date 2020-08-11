@@ -3,7 +3,6 @@ pipeline {
     registry = 'registry.hub.docker.com'
     registryCredential = 'docker-hub'
     repository = 'pvnovarese/jenkins-syft-demo'
-    imageLine = 'pvnovarese/jenkins-syft-demo:latest'
   }
   agent any
   stages {
@@ -17,7 +16,7 @@ pipeline {
         sh 'docker --version'
         script {
           docker.withRegistry('https://' + registry, registryCredential) {
-            //def image = docker.build(repository)
+            def image = docker.build(repository)
             //image.push()
           }
         }
