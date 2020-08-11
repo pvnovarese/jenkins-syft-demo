@@ -11,16 +11,14 @@ pipeline {
         checkout scm
       }
     }
-    stage('Build image and push to registry') {
+    stage('Build image and tag as latest') {
       steps {
         sh 'docker --version'
-        def image = docker.build(repository)
-        //script {
-          //docker.withRegistry('https://' + registry, registryCredential) {
-            //def image = docker.build(repository)
-            //image.push()
-          //}
-        //}
+        script {
+          docker.withRegistry('https://' + registry, registryCredential) {
+            def image = docker.build(repository)
+          }
+        }
       }
     }
     stage('Analyze with syft') {
@@ -30,7 +28,7 @@ pipeline {
         sh '/var/jenkins_home/syft ${repository}:latest | tr "\n" " " | grep -v curl'
       }
     }
-    stage('Build and push prod image to registry') {
+    stage('Build image with prod tag and push to registry') {
       steps {
         script {
           docker.withRegistry('https://' + registry, registryCredential) {
