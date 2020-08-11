@@ -25,7 +25,7 @@ pipeline {
     stage('Analyze with syft') {
       steps {
         // need to actually test this out once I get linux binaries
-        sh '/var/jenkins_home/syft ${repository}:latest | grep curl; EXIT=$?; if [ $EXIT -eq 1 ]; then echo "no match"; exit 0; else echo "match found"; exit 1; fi'
+        sh '/var/jenkins_home/syft ${repository}:latest | grep WUTT; EXIT=$?; if [ $EXIT -eq 1 ]; then echo "no match"; exit 0; else echo "match found"; exit 1; fi'
       }
     }
     stage('Build and push prod image to registry') {
