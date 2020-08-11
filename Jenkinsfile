@@ -25,7 +25,7 @@ pipeline {
       steps {
         // run syft, concatenate output to a single line and test that curl isn't in that line
         // the grep will fail if curl exists, causing the pipeline to fail
-        sh '/var/jenkins_home/syft ${repository}:latest | tr "\n" " " | grep -v curl'
+        sh '/var/jenkins_home/syft ${repository}:latest | tr "\n" " " | grep -qv curl'
       }
     }
     stage('Build image with prod tag and push to registry') {
