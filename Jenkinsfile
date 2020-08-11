@@ -26,7 +26,7 @@ pipeline {
     stage('Analyze with syft') {
       steps {
         // need to actually test this out once I get linux binaries
-        sh '/usr/local/bin/syft ${repository}:latest | grep Curl || exit 0'
+        sh '/var/jenkins_home/syft ${repository}:latest | grep -i Curl || exit 0'
       }
     }
     stage('Build and push prod image to registry') {
