@@ -25,7 +25,7 @@ pipeline {
     stage('Analyze with syft') {
       steps {
         // run syft, concatenate output to a single line and test that curl isn't in that line
-        sh '/var/jenkins_home/syft ${repository}:latest | tr "\n" " " | grep -v curl'
+        sh '/var/jenkins_home/syft ${repository}:latest | tr "\n" " " | grep -v WUTT'
       }
     }
     stage('Build and push prod image to registry') {
