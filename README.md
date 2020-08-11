@@ -1,8 +1,8 @@
-# Demo: integrating Jenkins with Syft
+# Demo: Integrating Jenkins with Syft
 
 This is a very rough demo of integrating Syft with jenkins.  If you don't know what Syft is, read up here: https://github.com/anchore/syft
 
-## Part 1: Jenkins setup
+## Part 1: Jenkins Setup
 
 We're going to run jenkins in a container to make this fairly self-contained and easily disposable.  This command will run jenkins and bind to the host's docker sock (if you don't know what that means, don't worry about it, it's not important).
 
