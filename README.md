@@ -9,6 +9,10 @@ We're going to run jenkins in a container to make this fairly self-contained and
 `$ docker run -u root -d --name jenkins --rm -p 8080:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp/jenkins-data:/var/jenkins_home jenkinsci/blueocean
 `
 
+and we'll need to install jq in the jenkins container:
+
+`$ docker exec jenkins apk add jq`
+
 Once Jenkins is up and running, we have just a few things to configure:
 - Get the initial password (`$ docker logs jenkins`)
 - log in on port 8080
