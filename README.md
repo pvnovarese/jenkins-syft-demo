@@ -9,9 +9,13 @@ We're going to run jenkins in a container to make this fairly self-contained and
 `$ docker run -u root -d --name jenkins --rm -p 8080:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp/jenkins-data:/var/jenkins_home jenkinsci/blueocean
 `
 
+and we'll need to install jq in the jenkins container:
+
+`$ docker exec jenkins apk add jq`
+
 Once Jenkins is up and running, we have just a few things to configure:
 - Get the initial password (`$ docker logs jenkins`)
-- :og in on port 8080
+- log in on port 8080
 - Unlock Jenkins using the password from the logs
 - Select “Install Selected Plugins” and create an admin user
 - Create a credential so we can push images into Docker Hub:
