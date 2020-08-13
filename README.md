@@ -11,7 +11,7 @@ We're going to run jenkins in a container to make this fairly self-contained and
 
 Once Jenkins is up and running, we have just a few things to configure:
 - Get the initial password (`$ docker logs jenkins`)
-- :og in on port 8080
+- log in on port 8080
 - Unlock Jenkins using the password from the logs
 - Select “Install Selected Plugins” and create an admin user
 - Create a credential so we can push images into Docker Hub:
