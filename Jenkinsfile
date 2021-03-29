@@ -42,7 +42,7 @@ pipeline {
           } catch (err) {
             // if scan fails, clean up (delete the image) and fail the build
             sh """
-              docker rmi ${REPOSITORY}:${BUILD_NUMBER}'
+              docker rmi ${REPOSITORY}:${BUILD_NUMBER}
               exit 1
             """
           } // end try/catch
