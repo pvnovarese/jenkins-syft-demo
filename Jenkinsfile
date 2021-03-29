@@ -42,6 +42,7 @@ pipeline {
           } catch (err) {
             // if scan fails, clean up (delete the image) and fail the build
             sh """
+              echo "Blocked package detected in ${REPOSITORY}:${BUILD_NUMBER}, cleaning up and failing build."
               docker rmi ${REPOSITORY}:${BUILD_NUMBER}
               exit 1
             """
