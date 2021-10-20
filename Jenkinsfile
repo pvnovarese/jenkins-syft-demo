@@ -38,7 +38,7 @@ pipeline {
             // run syft, use jq to get the list of artifact names, concatenate 
             // output to a single line and test that curl isn't in that line
             // the grep will fail if curl exists, causing the pipeline to fail
-            sh '/var/jenkins_home/syft -o json ${REPOSITORY}:${BUILD_NUMBER} | jq .artifacts[].name | tr "\n" " " | grep -qv curl'
+            sh '/usr/local/bin/syft -o json ${REPOSITORY}:${BUILD_NUMBER} | jq .artifacts[].name | tr "\n" " " | grep -qv curl'
           } catch (err) {
             // if scan fails, clean up (delete the image) and fail the build
             sh """
