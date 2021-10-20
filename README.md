@@ -24,9 +24,14 @@ Once Jenkins is up and running, we have just a few things to configure:
 	- Use your Docker Hub username and password (get an access token from Docker Hub if you are using multifactor authentication), and set the ID of the credential to “Docker Hub”.
 
 ## Part 2: Get Syft
-We can download the binaries directly into our bind mount directory we created we spun up the jenkins container:
+We can download the syft and grype binaries directly into our running container:
 
-`curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sudo sh -s -- -b /tmp/jenkins-data`
+```
+$ docker exec --user=root jenkins bash -c 'curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin'
+$ docker exec --user=root jenkins bash -c 'curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin'
+```
+
+NB: these are only installed into the container, not the image, so if you recreate the jenkins container, you'll need to re-download these.
 
 ## Part 3: A Simple Package Stoplist
 
