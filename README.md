@@ -31,7 +31,7 @@ $ docker exec --user=root jenkins bash -c 'curl -sSfL https://raw.githubusercont
 $ docker exec --user=root jenkins bash -c 'curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin'
 ```
 
-NB: these are only installed into the container, not the image, so if you recreate the jenkins container, you'll need to re-download these.
+NB: these are only installed into the running container, not the image, so if you recreate the jenkins container, you'll need to re-download these.
 
 ## Part 3: A Simple Package Stoplist
 
